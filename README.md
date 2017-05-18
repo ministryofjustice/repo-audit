@@ -3,8 +3,12 @@
 Scan all our repos and report on whether they're following
 the rules or not.
 
-Initially, this will scan public, ruby repos. The intention
-is to widen coverage, over time.
+## Usage
+
+* `bundle install`
+* [Create a Github OAuth token](https://github.com/settings/tokens/new)
+* `export GH_TOKEN=[your OAuth token]`
+* `bin/analyse.rb`
 
 ## Rules
 
