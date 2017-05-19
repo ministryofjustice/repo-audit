@@ -19,7 +19,8 @@ class Repoman::LicenseChecker
 
   def check_content(text)
     return fail_check("Not MIT licensed") unless /MIT License/ =~ text
-    return fail_check("Not MoJ licensed") unless /Copyright \(c\) [\d-]+ Ministry of Justice/ =~ text
+    return fail_check("Not Crown copyright licensed") unless
+      /Copyright \(c\) [\d-]+ Crown copyright \(Ministry of Justice\)/ =~ text
     passed
   end
 
