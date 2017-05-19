@@ -2,14 +2,14 @@ module Repoman
   class LicenseChecker < Checker
 
     def run
-      check_content FileFetcher.fetch(license_url)
-    rescue OpenURI::HTTPError => e
-      if e.message =~ /404/
-        add_error 'No LICENSE file'
-        result
+      file_result = RequiredFileChecker.new(repo, 'LICENSE', 'No LICENSE file').fetch
+      if file_result[:success]
+        check_content(file_result[:content])
+        {result: :passed}
       else
-        raise e
+        add_error(file_result[:error])
       end
+      result
     end
 
     private
