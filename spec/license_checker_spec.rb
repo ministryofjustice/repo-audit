@@ -13,7 +13,9 @@ describe Repoman::LicenseChecker do
   end
 
   context 'when the license is missing' do
-    let(:missing_license) { {result: :failed, reason: 'No LICENSE file'} }
+    let(:missing_license) {
+      {result: :failed, errors: ['No LICENSE file']}
+    }
 
     before do
       expect(Repoman::FileFetcher).to receive(:fetch).with(license_url).and_raise(OpenURI::HTTPError.new('404', nil))
@@ -40,7 +42,7 @@ describe Repoman::LicenseChecker do
     context 'when the license has errors' do
       let(:license_text) { 'This is not a valid license' }
       let(:check_failed) {
-        {result: :failed, reason: 'Not MIT licensed'}
+        {result: :failed, errors: ['Not MIT licensed', 'Not Crown copyright licensed']}
       }
 
       it 'fails with non-mit error' do
