@@ -30,5 +30,4 @@ the rules or not.
 * Return all errors with the content of the license file, don't just fail on the first one
 * For LICENSE file - automatically fix the problem (by using a standard license file) and raise a PR
 * Add a "notes" field to error reports, giving explanatory text with useful links
-* Add Danger integration to repoman itself
 * LICENSE file contains the current year in the copyright statement (waiting for a decision on whether this is really required)
