@@ -6,7 +6,7 @@ class Repoman::LicenseChecker
   end
 
   def run
-    check_content open(license_url, &:read)
+    check_content Repoman::FileFetcher.fetch(license_url)
   rescue OpenURI::HTTPError => e
     if e.message =~ /404/
       fail_check "No LICENSE file"

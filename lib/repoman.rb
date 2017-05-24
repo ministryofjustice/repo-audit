@@ -8,4 +8,5 @@ require 'open-uri'
 module Repoman
 end
 
+require_relative './repoman/file_fetcher'
 require_relative './repoman/license_checker'
