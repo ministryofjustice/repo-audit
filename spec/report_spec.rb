@@ -7,6 +7,7 @@ describe RepoAudit::Report do
 
   before do
     allow(RepoAudit::LicenseChecker).to receive(:new).with(repo).and_return(checker)
+    allow(ENV).to receive(:fetch).with('GH_TOKEN').and_return('dummy-token')
   end
 
   it 'accepts a repo' do
