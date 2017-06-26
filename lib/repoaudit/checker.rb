@@ -1,4 +1,4 @@
-module Repoman
+module RepoAudit
   class Checker
     attr_reader :repo
 

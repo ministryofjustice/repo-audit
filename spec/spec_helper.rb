@@ -1,5 +1,5 @@
 require 'rspec'
-require_relative '../lib/repoman'
+require_relative '../lib/repoaudit'
 
 RSpec.configure do |config|
   config.mock_with :rspec do |mocks|

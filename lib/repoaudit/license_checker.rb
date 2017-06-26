@@ -1,4 +1,4 @@
-module Repoman
+module RepoAudit
   class LicenseChecker < Checker
 
     def run
