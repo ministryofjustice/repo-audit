@@ -12,7 +12,6 @@ the rules or not.
 
 # TODO
 
-* Enable reporting on a single, specific repo (rather than iterating over all our repos)
 * Enable users to define the rules they want in a config file (cf. [Dangerfile](https://github.com/danger/danger))
 * Create a plugin architecture (cf. http://danger.systems/guides/creating_your_first_plugin.html)
 * Uses our Dangerfile
