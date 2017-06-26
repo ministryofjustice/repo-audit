@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/repoaudit'
+require_relative '../lib/repo-audit'
 
 # auto_pagination: false - only look at 30 repos. Switch to true to look at
 # everything. Be warned, it's a bit slow.
