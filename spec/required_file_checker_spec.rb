@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-describe Repoman::RequiredFileChecker do
+describe RepoAudit::RequiredFileChecker do
   let(:repo) { double(Github::Mash, { full_name: 'not-a-real-repo' }) }
   let(:filename) { 'some-file' }
   let(:file_content) { 'this is a test' }
@@ -11,13 +11,13 @@ describe Repoman::RequiredFileChecker do
   let(:failure) { { success: false, content: nil, error: error_message } }
 
   it 'derives the file url' do
-    expect(Repoman::FileFetcher).to receive(:fetch).with(file_url)
+    expect(RepoAudit::FileFetcher).to receive(:fetch).with(file_url)
     checker.fetch
   end
 
   context 'when the file is missing' do
     before do
-      expect(Repoman::FileFetcher).to receive(:fetch).with(file_url).and_raise(OpenURI::HTTPError.new('404', nil))
+      expect(RepoAudit::FileFetcher).to receive(:fetch).with(file_url).and_raise(OpenURI::HTTPError.new('404', nil))
     end
 
     it 'fails, returning the error' do
@@ -27,7 +27,7 @@ describe Repoman::RequiredFileChecker do
 
   context 'when the file exists' do
     before do
-      expect(Repoman::FileFetcher).to receive(:fetch).and_return(file_content)
+      expect(RepoAudit::FileFetcher).to receive(:fetch).and_return(file_content)
     end
 
     it 'returns the content of the file' do

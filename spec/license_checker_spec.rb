@@ -1,6 +1,6 @@
 require_relative 'spec_helper'
 
-describe Repoman::LicenseChecker do
+describe RepoAudit::LicenseChecker do
   let(:repo) { double(Github::Mash, { full_name: 'not-a-real-repo' }) }
   let(:checker) { described_class.new(repo) }
   let(:check_passed) { { result: :passed } }
@@ -8,7 +8,7 @@ describe Repoman::LicenseChecker do
   let(:license_url) { 'https://raw.githubusercontent.com/not-a-real-repo/master/LICENSE' }
 
   it 'fetches the license file' do
-    expect(Repoman::FileFetcher).to receive(:fetch).with(license_url).and_return(license_text)
+    expect(RepoAudit::FileFetcher).to receive(:fetch).with(license_url).and_return(license_text)
     checker.run
   end
 
@@ -18,7 +18,7 @@ describe Repoman::LicenseChecker do
     }
 
     before do
-      expect(Repoman::FileFetcher).to receive(:fetch).with(license_url).and_raise(OpenURI::HTTPError.new('404', nil))
+      expect(RepoAudit::FileFetcher).to receive(:fetch).with(license_url).and_raise(OpenURI::HTTPError.new('404', nil))
     end
 
     it 'fails with missing license error' do
@@ -28,7 +28,7 @@ describe Repoman::LicenseChecker do
 
   context 'when the license file exists' do
     before do
-      expect(Repoman::FileFetcher).to receive(:fetch).and_return(license_text)
+      expect(RepoAudit::FileFetcher).to receive(:fetch).and_return(license_text)
     end
 
     context 'when the license is OK' do

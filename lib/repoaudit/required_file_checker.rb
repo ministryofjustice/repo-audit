@@ -1,4 +1,4 @@
-module Repoman
+module RepoAudit
   class RequiredFileChecker
     attr_reader :repo, :repo_file, :missing_file_error
 
