@@ -15,6 +15,7 @@ if (user.to_s.empty? or name.to_s.empty?)
   exit(1)
 end
 
-ap RepoAudit::Report.new(user: user, name: name).run
-puts
+repo = RepoAudit::RepositoryHelper.find(user: user, name: name)
 
+ap RepoAudit::Report.new(repo: repo).run
+puts
