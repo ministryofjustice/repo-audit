@@ -8,6 +8,6 @@ github = Github.new(auto_pagination: false, oauth_token: ENV.fetch('GH_TOKEN'))
 
 # Just check a few repos, for speed
 github.repos.list(user: 'ministryofjustice')[10..15].map do |repo|
-  ap RepoAudit::Report.new(repo).run
+  ap RepoAudit::Report.new(repo: repo).run
   puts
 end

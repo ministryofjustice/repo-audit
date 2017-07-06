@@ -6,9 +6,14 @@ the rules or not.
 ## Usage
 
 * `bundle install`
-* [Create a Github OAuth token](https://github.com/settings/tokens/new)
+* [Create a Github OAuth token](https://github.com/settings/tokens/new) with at least the following scopes enabled: _read:org, read:repo_hook, read:user, repo:status_
 * `export GH_TOKEN=[your OAuth token]`
+
+To analyse all repositories in the ministryofjustice organisation:
 * `bin/analyse.rb`
+
+To analyse a specific repository:
+* `bin/check-repo.rb [username] [repository name]`
 
 # TODO
 
