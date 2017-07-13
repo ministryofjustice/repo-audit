@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'github_api'
+gem 'hashie'
 
 group :development do
   gem 'awesome_print'

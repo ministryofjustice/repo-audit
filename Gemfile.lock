@@ -98,6 +98,7 @@ PLATFORMS
 DEPENDENCIES
   awesome_print
   github_api
+  hashie
   ministryofjustice-danger
   pry-byebug
   rspec
