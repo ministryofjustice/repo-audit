@@ -1,0 +1,10 @@
+checks:
+  - type: :check_a
+    metadata:
+      description: My check A description
+    arguments:
+      whatever: just a test
+
+  - type: :check_b
+    metadata:
+      description: My check B description
