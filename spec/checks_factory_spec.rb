@@ -9,7 +9,7 @@ describe RepoAudit::ChecksFactory do
     it 'adds a new check to the internal store' do
       expect {
         subject.register(:test_check, test_check_class)
-      }.to change { subject.registered_checks.size }.from(0).to(1)
+      }.to change { subject.registered_checks.size }.by(1)
     end
 
     it 'register the check class with the given type' do
