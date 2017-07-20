@@ -1,0 +1,8 @@
+checks:
+  # The following check is intended for demo purposes, as it is simple to understand
+  - type: :example_check
+    metadata:
+      description: 'Repo name contains the fragment `client`'
+      style_guide_url: 'http://example.com/#name-client'
+    arguments:
+      name_matcher: client
