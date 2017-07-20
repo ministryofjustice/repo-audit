@@ -1,5 +1,6 @@
 require 'bundler/setup'
 require 'awesome_print'
+require 'csv'
 require 'github_api'
 require 'open-uri'
 require 'pp'
@@ -17,7 +18,7 @@ require_relative './repo-audit/file_fetcher'
 require_relative './repo-audit/license_checker'
 require_relative './repo-audit/repository_helper'
 require_relative './repo-audit/report'
-
+require_relative './repo-audit/csv_report'
 require_relative './repo-audit/checks/base_check'
 
 # This will take care of requiring all the checks, without having to add
