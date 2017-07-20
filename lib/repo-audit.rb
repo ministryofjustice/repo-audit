@@ -1,9 +1,9 @@
 require 'bundler/setup'
-require 'github_api'
 require 'awesome_print'
+require 'github_api'
+require 'open-uri'
 require 'pp'
 require 'pry-byebug'
-require 'open-uri'
 
 module RepoAudit
 end
