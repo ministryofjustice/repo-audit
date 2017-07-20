@@ -1,14 +1,13 @@
 module RepoAudit::Checks
   class FileContentCheck < BaseCheck
+    include RepoAudit::RepositoryContent
+
     register_check :file_content_check
 
-    URL_PATTERN = 'https://raw.githubusercontent.com/%{repo_full_name}/master/%{filename}'.freeze
-
-    attr_accessor :filename
     attr_accessor :content_matchers
 
     def run(repo)
-      url = format(URL_PATTERN, repo_full_name: repo.full_name, filename: filename)
+      url = file_url(repo)
       file_content_matches?(url) ? success : failure
     end
 
