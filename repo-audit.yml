@@ -1,19 +1,4 @@
 checks:
-  # The following check is intended for demo purposes, as it is simple to understand
-  - type: :example_check
-    metadata:
-      description: 'Repo name contains the fragment `client`'
-      style_guide_url: 'http://example.com/#name-client'
-    arguments:
-      name_matcher: client
-
- - type: :required_file_check
-    metadata:
-      description: 'Repo contains a LICENSE file'
-      style_guide_url: 'http://example.com/#file-license'
-    arguments:
-      filename: LICENSE
-
   - type: :file_content_check
     metadata:
       description: 'LICENSE file has the expected content'
@@ -23,3 +8,12 @@ checks:
       content_matchers:
         - MIT License
         - Copyright \(c\) [\d-]+ Crown copyright \(Ministry of Justice\)
+
+  - type: :file_content_check
+    metadata:
+      description: 'Dangerfile file has the expected content'
+      style_guide_url: 'http://example.com/#file-dangerfile-content'
+    arguments:
+      filename: Dangerfile
+      content_matchers:
+        - ministryofjustice/danger

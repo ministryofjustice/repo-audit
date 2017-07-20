@@ -1,16 +1,13 @@
 require_relative 'spec_helper'
 
 describe RepoAudit::Report do
-  let(:repo) { double(Github::Mash, { full_name: 'some-user/not-a-real-repo' }) }
-  let(:report) { described_class.new(repo: repo) }
-  let(:checker) { double(run: nil) }
+  let(:repo) { double(full_name: 'some-user/not-a-real-repo') }
+  let(:checks_collection) { spy('checks_collection') }
 
-  before do
-    allow(RepoAudit::LicenseChecker).to receive(:new).with(repo).and_return(checker)
-  end
+  subject { described_class.new(repo: repo, checks: checks_collection) }
 
-  it 'accepts a repo' do
-    expect { described_class.new(repo: repo) }.to_not raise_error
+  it 'accepts a repo and their checks' do
+    expect { described_class.new(repo: repo, checks: checks_collection) }.to_not raise_error
   end
 
   it 'raises an exception when required arguments are not supplied' do
@@ -18,13 +15,18 @@ describe RepoAudit::Report do
   end
 
   it 'reports on a repo' do
-    expect(RepoAudit::LicenseChecker).to receive(:new).with(repo).and_return(checker)
-    expect(checker).to receive(:run)
+    expect(checks_collection).to receive(:run)
+    expect(repo).to receive(:full_name)
 
-    report.run
+    subject.run
   end
 
   it 'returns a report hash' do
-    expect(report.run).to eq({ repo: "some-user/not-a-real-repo", results: {license_check: nil} })
+    expect(checks_collection).to receive(:run).and_return(
+      [{'TestCheck' => {result: :success, description: 'A description'}}]
+    )
+    expect(subject.run).to eq(
+      { repo: "some-user/not-a-real-repo", results: [{'TestCheck' => {result: :success, description: 'A description'}}] }
+    )
   end
 end
