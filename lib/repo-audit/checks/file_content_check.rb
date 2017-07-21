@@ -8,13 +8,13 @@ module RepoAudit::Checks
     attr_accessor :content_matchers
 
     def run(repo)
-      url = file_url(repo, filename)
-      file_content_matches?(url) ? success : failure
+      file_content_matches?(repo) ? success : failure
     end
 
     private
 
-    def file_content_matches?(url)
+    def file_content_matches?(repo)
+      url = file_url(repo, filename)
       file_content = RepoAudit::FileRequestHelper.fetch(url)
 
       content_matchers.all? do |regex|

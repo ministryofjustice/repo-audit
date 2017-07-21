@@ -7,13 +7,13 @@ module RepoAudit::Checks
     attr_accessor :filename
 
     def run(repo)
-      url = file_url(repo, filename)
-      file_exists?(url) ? success : failure
+      file_exists?(repo) ? success : failure
     end
 
     private
 
-    def file_exists?(url)
+    def file_exists?(repo)
+      url = file_url(repo, filename)
       RepoAudit::FileRequestHelper.exists?(url)
     end
   end
