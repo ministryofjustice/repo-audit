@@ -6,3 +6,10 @@ checks:
       style_guide_url: 'http://example.com/#name-client'
     arguments:
       name_matcher: client
+
+ - type: :required_file_check
+    metadata:
+      description: 'Repo contains a LICENSE file'
+      style_guide_url: 'http://example.com/#file-license'
+    arguments:
+      filename: LICENSE

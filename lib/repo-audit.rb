@@ -15,6 +15,7 @@ require_relative './repo-audit/checker'
 require_relative './repo-audit/required_file_checker'
 require_relative './repo-audit/file_fetcher'
 require_relative './repo-audit/license_checker'
+require_relative './repo-audit/file_request_helper'
 require_relative './repo-audit/repository_helper'
 require_relative './repo-audit/report'
 
