@@ -4,8 +4,10 @@ module RepoAudit::Checks
 
     register_check :required_file_check
 
+    attr_accessor :filename
+
     def run(repo)
-      url = file_url(repo)
+      url = file_url(repo, filename)
       file_exists?(url) ? success : failure
     end
 

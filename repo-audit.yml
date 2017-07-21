@@ -17,3 +17,11 @@ checks:
       filename: Dangerfile
       content_matchers:
         - ministryofjustice/danger
+
+  - type: :at_least_one_file_check
+    metadata:
+      description: 'Repository uses at least one of these CI: Travis or Circle'
+    arguments:
+      filenames:
+        - .travis.yml
+        - circle.yml

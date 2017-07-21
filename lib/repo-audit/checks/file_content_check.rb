@@ -4,10 +4,11 @@ module RepoAudit::Checks
 
     register_check :file_content_check
 
+    attr_accessor :filename
     attr_accessor :content_matchers
 
     def run(repo)
-      url = file_url(repo)
+      url = file_url(repo, filename)
       file_content_matches?(url) ? success : failure
     end
 
