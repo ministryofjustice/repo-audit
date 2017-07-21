@@ -13,7 +13,7 @@ module RepoAudit::Checks
     private
 
     def file_exists?(repo)
-      url = file_url(repo, filename)
+      url = repository_file_url(repo, filename)
       RepoAudit::FileRequestHelper.exists?(url)
     end
   end

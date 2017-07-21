@@ -14,7 +14,7 @@ module RepoAudit::Checks
 
     def at_least_one_file_exists?(repo)
       filenames.detect do |filename|
-        url = file_url(repo, filename)
+        url = repository_file_url(repo, filename)
         RepoAudit::FileRequestHelper.exists?(url)
       end
     end

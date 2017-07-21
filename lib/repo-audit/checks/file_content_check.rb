@@ -14,7 +14,7 @@ module RepoAudit::Checks
     private
 
     def file_content_matches?(repo)
-      url = file_url(repo, filename)
+      url = repository_file_url(repo, filename)
       file_content = RepoAudit::FileRequestHelper.fetch(url)
 
       content_matchers.all? do |regex|
