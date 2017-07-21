@@ -13,3 +13,13 @@ checks:
       style_guide_url: 'http://example.com/#file-license'
     arguments:
       filename: LICENSE
+
+  - type: :file_content_check
+    metadata:
+      description: 'LICENSE file has the expected content'
+      style_guide_url: 'http://example.com/#file-license-content'
+    arguments:
+      filename: LICENSE
+      content_matchers:
+        - MIT License
+        - Copyright \(c\) [\d-]+ Crown copyright \(Ministry of Justice\)

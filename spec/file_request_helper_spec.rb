@@ -45,4 +45,34 @@ describe RepoAudit::FileRequestHelper do
       end
     end
   end
+
+  describe '.fetch' do
+    it 'builds an HTTP object from the given URL' do
+      expect(Net::HTTP).to receive(:new).with('example.com', 443)
+      described_class.fetch('https://example.com/file.txt')
+    end
+
+    it 'enables the SSL flag in the HTTP object' do
+      expect(http).to receive(:use_ssl=).with(true)
+      described_class.fetch('anything')
+    end
+
+    it 'sends a GET request to the given URL' do
+      expect(http).to receive(:get).with('https://example.com/file.txt')
+      described_class.fetch('https://example.com/file.txt')
+    end
+
+    context 'response body' do
+      let(:response) { spy }
+
+      before do
+        allow(http).to receive(:get).and_return(response)
+      end
+
+      it 'returns the body' do
+        expect(response).to receive(:body)
+        described_class.fetch('anything')
+      end
+    end
+  end
 end

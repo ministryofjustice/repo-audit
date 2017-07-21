@@ -7,6 +7,10 @@ class RepoAudit::FileRequestHelper
       http(url).request_head(url).is_a?(Net::HTTPSuccess)
     end
 
+    def fetch(url)
+      http(url).get(url).body
+    end
+
     private
 
     def http(url)
