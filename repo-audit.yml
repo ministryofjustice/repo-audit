@@ -17,3 +17,7 @@ checks:
       filename: Dangerfile
       content_matchers:
         - ministryofjustice/danger
+
+  - type: :last_commit_check
+    metadata:
+      description: 'Timestamp and author of the last commit'
