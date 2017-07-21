@@ -9,6 +9,15 @@ module RepoAudit
         github_client.repos.list(user: user)
       end
 
+      def last_commit(user:, name:)
+        github_client(auto_pagination: false)
+          .repos
+          .commits
+          .list(user, name)
+          .to_a
+          .first
+      end
+
       private
 
       # auto_pagination: false - only look at 30 repos. Switch to true to look at
