@@ -10,6 +10,18 @@ describe RepoAudit::RepositoryHelper do
     ).and_return(github_client)
   end
 
+  context '.last_commit' do
+    let(:commits) { double(Array) }
+
+    it 'fetches the last commit using the Github client' do
+      expect(Github::Client).to receive(:new).with(hash_including(auto_pagination: false))
+      expect(github_client).to receive_message_chain(:repos, :commits, list: commits).with('org', 'repo')
+      expect(commits).to receive_message_chain(:to_a, :first)
+
+      described_class.last_commit(user: 'org', name: 'repo')
+    end
+  end
+
   context '.find' do
     it 'raises an exception when required arguments are not supplied' do
       expect { described_class.find(foo: 'bar') }.to raise_error(ArgumentError)

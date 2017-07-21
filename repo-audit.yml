@@ -25,3 +25,7 @@ checks:
       filenames:
         - .travis.yml
         - circle.yml
+
+  - type: :last_commit_check
+    metadata:
+      description: 'Timestamp and author of the last commit'
