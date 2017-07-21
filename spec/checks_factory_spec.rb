@@ -45,7 +45,7 @@ describe RepoAudit::ChecksFactory do
 
     it 'it retrieves the check from the store' do
       expect(subject).to receive(:fetch).with(:test_check).and_call_original
-      subject.build(:test_check, {})
+      subject.build(:test_check, nil, nil)
     end
 
     it 'instantiate a check, given their type' do
