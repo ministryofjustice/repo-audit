@@ -1,17 +1,17 @@
 module RepoAudit
   class Report
     attr_reader :repo
+    attr_reader :checks
 
-    def initialize(repo:)
+    def initialize(repo:, checks:)
       @repo = repo
+      @checks = checks
     end
 
     def run
       {
         repo: repo.full_name,
-        results: {
-          license_check: LicenseChecker.new(repo).run
-        }
+        results: checks.run(repo)
       }
     end
   end

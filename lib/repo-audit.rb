@@ -3,7 +3,6 @@ require 'github_api'
 require 'awesome_print'
 require 'pp'
 require 'pry-byebug'
-require 'open-uri'
 
 module RepoAudit
 end
@@ -11,11 +10,9 @@ end
 require_relative './repo-audit/configuration'
 require_relative './repo-audit/checks_factory'
 require_relative './repo-audit/checks_collection'
-require_relative './repo-audit/checker'
-require_relative './repo-audit/required_file_checker'
-require_relative './repo-audit/file_fetcher'
-require_relative './repo-audit/license_checker'
+require_relative './repo-audit/file_request_helper'
 require_relative './repo-audit/repository_helper'
+require_relative './repo-audit/repository_content'
 require_relative './repo-audit/report'
 
 require_relative './repo-audit/checks/base_check'
