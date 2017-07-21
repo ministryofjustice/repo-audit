@@ -31,8 +31,8 @@ module RepoAudit::Checks
       args.each { |k, v| send("#{k}=", v) }
     end
 
-    def result(result)
-      { self.class.name => { result: result, description: description } }
+    def result(outcome)
+      { self.class.name => { result: outcome, description: description } }
     end
 
     class << self
