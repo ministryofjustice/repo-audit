@@ -20,5 +20,6 @@ end
 
 repo = RepoAudit::RepositoryHelper.find(user: user, name: name)
 
-ap RepoAudit::Report.new(repo: repo, checks: checks).run
-puts
+result = RepoAudit::Report.new(repo: repo, checks: checks).run
+
+puts result.to_json
