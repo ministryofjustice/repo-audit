@@ -11,10 +11,10 @@ module RepoAudit
 
       private
 
-      def github_client
-        # auto_pagination: false - only look at 30 repos. Switch to true to look at
-        # everything. Be warned, it's a bit slow.
-        Github::Client.new(auto_pagination: false, oauth_token: ENV.fetch('GH_TOKEN'))
+      # auto_pagination: false - only look at 30 repos. Switch to true to look at
+      # everything. Be warned, it's a bit slow.
+      def github_client(auto_pagination: false)
+        Github::Client.new(auto_pagination: auto_pagination, oauth_token: ENV.fetch('GH_TOKEN'))
       end
     end
   end
