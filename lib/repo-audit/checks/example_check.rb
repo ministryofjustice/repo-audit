@@ -1,7 +1,7 @@
 module RepoAudit::Checks
   class ExampleCheck < BaseCheck
     # This method will register in the factory this check Class
-    register_check :example_check
+    register_check :example
 
     # Checks can have configuration accessors needed for their task to be accomplished
     attr_accessor :name_matcher
