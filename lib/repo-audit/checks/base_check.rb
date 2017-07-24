@@ -27,8 +27,8 @@ module RepoAudit::Checks
     private
 
     def set_attributes(args)
-      return unless args.is_a?(Hash)
-      args.each { |k, v| send("#{k}=", v) }
+      return unless args.instance_of?(Hash)
+      args.each { |k, v| public_send("#{k}=", v) }
     end
 
     def result(outcome)
