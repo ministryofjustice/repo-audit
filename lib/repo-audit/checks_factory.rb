@@ -3,7 +3,7 @@ module RepoAudit
     class CheckNotFoundError < RuntimeError; end
 
     class << self
-      def build(type, metadata, arguments = nil)
+      def build(type, metadata, arguments)
         fetch(type).new(metadata, arguments)
       end
 

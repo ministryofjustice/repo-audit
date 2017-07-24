@@ -8,8 +8,8 @@ RSpec.shared_examples 'a Check' do |options|
   end
 
   describe '.new' do
-    it 'requires the metadata and the arguments' do
-      expect { described_class.new }.to raise_error(ArgumentError, /given 0, expected 2/)
+    it 'requires the metadata and optionally the arguments' do
+      expect { described_class.new }.to raise_error(ArgumentError, /given 0, expected 1..2/)
     end
 
     context 'configures the check with the metadata' do
@@ -42,21 +42,11 @@ RSpec.shared_examples 'a Check' do |options|
       end
     end
 
-    context 'configures the check with the arguments' do
-      context 'when expected arguments are provided' do
-        it 'sets the attribute values' do
-          expect(
-            arguments.values
-          ).to eq(arguments.keys.map { |attr| subject.public_send(attr) })
-        end
-      end
+    context 'when unexpected arguments are provided' do
+      let(:arguments) { {whatever: 'hello'} }
 
-      context 'when unexpected arguments are provided' do
-        let(:arguments) { {whatever: 'hello'} }
-
-        it 'raises an exception' do
-          expect { subject.name_matcher }.to raise_error(NoMethodError, /whatever/)
-        end
+      it 'raises an exception' do
+        expect { subject.whatever }.to raise_error(NoMethodError, /whatever/)
       end
     end
   end
