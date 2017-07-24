@@ -2,3 +2,4 @@ rvm: 2.3.3
 
 script:
   - bundle exec danger
+  - bundle exec mutant --use rspec RepoAudit*
