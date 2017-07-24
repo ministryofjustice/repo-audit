@@ -4,16 +4,17 @@ module RepoAudit::Checks
 
     register_check :file_content_check
 
+    attr_accessor :filename
     attr_accessor :content_matchers
 
     def run(repo)
-      url = file_url(repo)
-      file_content_matches?(url) ? success : failure
+      file_content_matches?(repo) ? success : failure
     end
 
     private
 
-    def file_content_matches?(url)
+    def file_content_matches?(repo)
+      url = repository_file_url(repo, filename)
       file_content = RepoAudit::FileRequestHelper.fetch(url)
 
       content_matchers.all? do |regex|
