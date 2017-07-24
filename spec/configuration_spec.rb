@@ -9,6 +9,11 @@ describe RepoAudit::Configuration do
     it 'reads the file and returns a Configuration instance' do
       expect(subject).to be_an_instance_of(described_class)
     end
+
+    it 'uses Hashie to load the file' do
+      expect(Hashie::Mash).to receive(:load).with(config_file)
+      described_class.load(config_file)
+    end
   end
 
   describe 'access configuration with method-based reading' do
