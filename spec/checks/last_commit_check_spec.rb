@@ -40,6 +40,16 @@ describe RepoAudit::Checks::LastCommitCheck do
       })
     end
 
+    it 'gets the repo name from the repo' do
+      expect(repository).to receive(:name)
+      check.run(repository)
+    end
+
+    it 'gets the username from the repo' do
+      expect(repository).to receive_message_chain(:owner, :login)
+      check.run(repository)
+    end
+
   end
 
 end
