@@ -3,7 +3,7 @@ module RepoAudit::Checks
     attr_reader :description
     attr_reader :style_guide_url
 
-    def initialize(metadata, arguments)
+    def initialize(metadata, arguments = nil)
       @description = metadata.fetch(:description)
       @style_guide_url = metadata.fetch(:style_guide_url, 'n/a')
 
