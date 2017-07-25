@@ -29,3 +29,7 @@ checks:
   - type: :last_commit
     metadata:
       description: 'Timestamp and author of the last commit'
+
+  - type: :visibility
+    metadata:
+      description: 'Visibility (public/private)'
