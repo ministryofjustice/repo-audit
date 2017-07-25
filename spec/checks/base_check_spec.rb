@@ -12,8 +12,8 @@ describe RepoAudit::Checks::BaseCheck do
     end
   end
 
-  context 'with arguments hash' do
-    let(:arguments) { { foo: 'bar' } }
+  context 'with arguments' do
+    let(:arguments) { Hashie::Mash.new(foo: 'bar') }
 
     class Wibble < RepoAudit::Checks::BaseCheck
       attr_accessor :foo
