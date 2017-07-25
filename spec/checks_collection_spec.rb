@@ -7,12 +7,29 @@ describe RepoAudit::ChecksCollection do
 
   subject { described_class.new(config: checks_config) }
 
+  context 'collecting checks' do
+    let(:checks_config) { [
+      Hashie::Mash.new({
+        "type" => :file_content,
+        "metadata" =>  {
+          "description" => "LICENSE file has the expected content"
+        }
+      })
+    ] }
+
+    it 'behaves like an array of checks' do
+      expect(subject.size).to eq(1)
+      expect(subject.each).to be_an_instance_of(Enumerator)
+      expect(subject.first.description).to eq('LICENSE file has the expected content')
+    end
+  end
+
   describe '.new' do
     before do
       allow(RepoAudit::ChecksFactory).to receive(:build)
     end
 
-    it 'builds the checks using their configuration' do
+    it 'instantiates the checks using their configuration' do
       expect(subject).to be_an_instance_of(described_class)
 
       expect(check1).to have_received(:type)
@@ -22,11 +39,6 @@ describe RepoAudit::ChecksCollection do
       expect(check2).to have_received(:type)
       expect(check2).to have_received(:metadata)
       expect(check2).to have_received(:arguments)
-    end
-
-    it 'behaves like an array' do
-      expect(subject.size).to eq(2)
-      expect(subject.each).to be_an_instance_of(Enumerator)
     end
   end
 
