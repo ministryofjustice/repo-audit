@@ -12,7 +12,7 @@ module RepoAudit
 
     def build_checks(config)
       config.map do |c|
-        RepoAudit::ChecksFactory.build(c.type, c.metadata, c.arguments)
+        ChecksFactory.build(c.type, c.metadata, c.arguments)
       end
     end
   end

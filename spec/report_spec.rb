@@ -15,7 +15,7 @@ describe RepoAudit::Report do
   end
 
   it 'reports on a repo' do
-    expect(checks_collection).to receive(:run)
+    expect(checks_collection).to receive(:run).with(repo)
     expect(repo).to receive(:full_name)
 
     subject.run
