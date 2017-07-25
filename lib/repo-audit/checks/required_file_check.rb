@@ -2,7 +2,7 @@ module RepoAudit::Checks
   class RequiredFileCheck < BaseCheck
     include RepoAudit::RepositoryContent
 
-    register_check :required_file_check
+    register_check :required_file
 
     attr_accessor :filename
 

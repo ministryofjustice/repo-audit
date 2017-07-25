@@ -4,7 +4,7 @@ describe RepoAudit::Checks::LastCommitCheck do
   let(:metadata)  { {description: 'check description', style_guide_url: 'www.example.com'} }
   subject(:check) { described_class.new(metadata) }
 
-  it_behaves_like 'a Check', name: :last_commit_check
+  it_behaves_like 'a Check', name: :last_commit
 
   context '#run' do
     let(:repository) { double('Repository', name: 'my-repo') }

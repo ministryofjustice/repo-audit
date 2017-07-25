@@ -2,7 +2,7 @@ module RepoAudit::Checks
   class AtLeastOneFileCheck < BaseCheck
     include RepoAudit::RepositoryContent
 
-    register_check :at_least_one_file_check
+    register_check :at_least_one_file
 
     attr_accessor :filenames
 

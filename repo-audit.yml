@@ -1,5 +1,5 @@
 checks:
-  - type: :file_content_check
+  - type: :file_content
     metadata:
       description: 'LICENSE file has the expected content'
       style_guide_url: 'http://example.com/#file-license-content'
@@ -9,7 +9,7 @@ checks:
         - MIT License
         - Copyright \(c\) [\d-]+ Crown copyright \(Ministry of Justice\)
 
-  - type: :file_content_check
+  - type: :file_content
     metadata:
       description: 'Dangerfile file has the expected content'
       style_guide_url: 'http://example.com/#file-dangerfile-content'
@@ -18,7 +18,7 @@ checks:
       content_matchers:
         - ministryofjustice/danger
 
-  - type: :at_least_one_file_check
+  - type: :at_least_one_file
     metadata:
       description: 'Repository uses at least one of these CI: Travis or Circle'
     arguments:
@@ -26,6 +26,6 @@ checks:
         - .travis.yml
         - circle.yml
 
-  - type: :last_commit_check
+  - type: :last_commit
     metadata:
       description: 'Timestamp and author of the last commit'

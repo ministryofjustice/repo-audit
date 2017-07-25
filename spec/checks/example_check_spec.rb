@@ -6,7 +6,7 @@ describe RepoAudit::Checks::ExampleCheck do
 
   subject { described_class.new(metadata, arguments) }
 
-  it_behaves_like 'a Check', name: :example_check
+  it_behaves_like 'a Check', name: :example
 
   context '#run' do
     let(:repository) { double('Repository', name: repo_name) }

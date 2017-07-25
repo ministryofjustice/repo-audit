@@ -2,7 +2,7 @@ module RepoAudit::Checks
   class FileContentCheck < BaseCheck
     include RepoAudit::RepositoryContent
 
-    register_check :file_content_check
+    register_check :file_content
 
     attr_accessor :filename
     attr_accessor :content_matchers

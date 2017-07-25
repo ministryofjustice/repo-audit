@@ -6,7 +6,7 @@ describe RepoAudit::Checks::AtLeastOneFileCheck do
 
   subject { described_class.new(metadata, arguments) }
 
-  it_behaves_like 'a Check', name: :at_least_one_file_check
+  it_behaves_like 'a Check', name: :at_least_one_file
 
   context '#run' do
     let(:repository) { double('Repository', full_name: 'org/repo-name') }

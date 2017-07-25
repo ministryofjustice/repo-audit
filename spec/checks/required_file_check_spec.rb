@@ -6,7 +6,7 @@ describe RepoAudit::Checks::RequiredFileCheck do
 
   subject { described_class.new(metadata, arguments) }
 
-  it_behaves_like 'a Check', name: :required_file_check
+  it_behaves_like 'a Check', name: :required_file
 
   context '#run' do
     let(:repository) { double('Repository', full_name: 'org/repo-name') }

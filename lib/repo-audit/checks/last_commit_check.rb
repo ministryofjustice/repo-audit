@@ -1,6 +1,6 @@
 module RepoAudit::Checks
   class LastCommitCheck < BaseCheck
-    register_check :last_commit_check
+    register_check :last_commit
 
     def run(repo)
       commit = RepoAudit::RepositoryHelper.last_commit(user: repo.owner.login, name: repo.name)
