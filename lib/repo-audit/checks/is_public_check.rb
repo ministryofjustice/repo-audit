@@ -1,8 +1,8 @@
 module RepoAudit
   module Checks
-    class VisibilityCheck < BaseCheck
+    class IsPublicCheck < BaseCheck
 
-      register_check :visibility
+      register_check :is_public
 
       def run(repo)
         repo.private ? failure : success

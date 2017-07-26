@@ -1,10 +1,10 @@
 require_relative '../spec_helper'
 
-describe RepoAudit::Checks::VisibilityCheck do
-  let(:metadata)  { {description: 'visibility check', style_guide_url: 'www.example.com'} }
+describe RepoAudit::Checks::IsPublicCheck do
+  let(:metadata)  { {description: 'Repository is public', style_guide_url: 'www.example.com'} }
   subject(:check) { described_class.new(metadata) }
 
-  it_behaves_like 'a Check', name: :visibility
+  it_behaves_like 'a Check', name: :is_public
 
   context 'for a public repo' do
     let(:repository) { double('Repository', private: false) }
