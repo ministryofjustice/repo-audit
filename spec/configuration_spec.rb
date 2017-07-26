@@ -2,17 +2,18 @@ require_relative 'spec_helper'
 
 describe RepoAudit::Configuration do
   let(:config_file) { 'spec/fixtures/example-config.yml' }
+  let(:loader_class) { class_double('Loader') }
 
   subject { described_class.load(config_file) }
 
   describe '.load' do
-    it 'reads the file and returns a Configuration instance' do
+    it 'returns a Configuration instance' do
       expect(subject).to be_an_instance_of(described_class)
     end
 
-    it 'uses Hashie to load the file' do
-      expect(Hashie::Mash).to receive(:load).with(config_file)
-      described_class.load(config_file)
+    it 'uses the loader class to read the file' do
+      expect(loader_class).to receive(:load).with(config_file)
+      described_class.load(config_file, loader_class)
     end
   end
 
