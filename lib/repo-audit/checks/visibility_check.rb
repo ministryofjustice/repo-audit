@@ -5,8 +5,7 @@ module RepoAudit
       register_check :visibility
 
       def run(repo)
-        visibility = repo.private ? :private : :public
-        result(visibility: visibility)
+        repo.private ? failure : success
       end
     end
   end

@@ -32,4 +32,4 @@ checks:
 
   - type: :visibility
     metadata:
-      description: 'Visibility (public/private)'
+      description: 'Repository is public'

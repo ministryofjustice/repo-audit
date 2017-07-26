@@ -9,24 +9,18 @@ describe RepoAudit::Checks::VisibilityCheck do
   context 'for a public repo' do
     let(:repository) { double('Repository', private: false) }
 
-    it 'returns the expected result' do
-      expect(check.run(repository)).to \
-        eq('RepoAudit::Checks::VisibilityCheck' => {
-          result: { visibility: :public },
-          description: 'visibility check'
-        })
+    it 'passes' do
+      expect(check).to receive(:success)
+      check.run(repository)
     end
   end
 
   context 'for a private repo' do
     let(:repository) { double('Repository', private: true) }
 
-    it 'returns the expected result' do
-      expect(check.run(repository)).to \
-        eq('RepoAudit::Checks::VisibilityCheck' => {
-          result: { visibility: :private },
-          description: 'visibility check'
-        })
+    it 'fails' do
+      expect(check).to receive(:failure)
+      check.run(repository)
     end
   end
 end
