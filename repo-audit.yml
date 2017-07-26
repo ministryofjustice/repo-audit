@@ -30,6 +30,6 @@ checks:
     metadata:
       description: 'Timestamp and author of the last commit'
 
-  - type: :visibility
+  - type: :is_public
     metadata:
-      description: 'Visibility (public/private)'
+      description: 'Repository is public'
