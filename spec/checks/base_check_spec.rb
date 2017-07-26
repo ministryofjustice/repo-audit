@@ -4,12 +4,10 @@ describe RepoAudit::Checks::BaseCheck do
   let(:metadata)  { {description: 'check description', style_guide_url: 'www.example.com'} }
   subject(:check) { described_class.new(metadata) }
 
-  context 'when arguments is not a hash' do
-    let(:arguments) { 'this is not a hash' }
-
-    it 'ignores arguments' do
-      described_class.new(metadata, arguments)
-    end
+  it 'ignores arguments when not a hash' do
+    expect {
+      described_class.new(metadata, 'this is not a hash')
+    }.to_not raise_error
   end
 
   context 'with arguments' do
