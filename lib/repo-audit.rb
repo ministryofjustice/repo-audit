@@ -8,6 +8,7 @@ module RepoAudit
 end
 
 require_relative './repo-audit/configuration'
+require_relative './repo-audit/constants'
 require_relative './repo-audit/checks_factory'
 require_relative './repo-audit/checks_collection'
 require_relative './repo-audit/file_request_helper'

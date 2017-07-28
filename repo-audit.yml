@@ -29,18 +29,14 @@ checks:
       description: 'If a ruby repository, version must be ~> 2.2'
     arguments:
       version: '~> 2.2'
-      file_matchers:
-        - Gemfile: ^ruby '(?<version>\S+)'$
-        - .ruby-version: ^(?<version>\S+)$
-        - .travis.yml: '^rvm: (?<version>\S+)$'
+      file_matchers: <%= RepoAudit::Constants::RUBY_VERSION_FILES %>
 
   - type: :version
     metadata:
       description: 'If a rails repository, Rails version must be >= 4.2'
     arguments:
       version: '>= 4.2'
-      file_matchers:
-        - Gemfile.lock: ^\s+rails \((?<version>\S+)\)$
+      file_matchers: <%= RepoAudit::Constants::RAILS_VERSION_FILES %>
 
   - type: :last_commit
     metadata:

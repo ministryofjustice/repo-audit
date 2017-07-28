@@ -2,7 +2,7 @@ require_relative '../spec_helper'
 
 describe RepoAudit::Checks::VersionCheck do
   let(:metadata)  { {description: 'check description', style_guide_url: 'www.example.com'} }
-  let(:arguments) { {version: '~> 2.2', file_matchers: [{'Gemfile' => "^ruby '(?<version>\.*)'$"}]} }
+  let(:arguments) { {version: '~> 2.2', file_matchers: [['Gemfile', '^ruby \'(?<version>\S+)\'']]} }
 
   subject { described_class.new(metadata, arguments) }
 

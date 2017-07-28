@@ -15,9 +15,7 @@ module RepoAudit
       private
 
       def match_version?(repo)
-        file_matchers.detect do |matcher_hash|
-          filename, regex = matcher_hash.flatten
-
+        file_matchers.detect do |filename, regex|
           url = repository_file_url(repo, filename)
           file_content = FileRequestHelper.fetch(url)
 
