@@ -14,6 +14,7 @@ require_relative './repo-audit/file_request_helper'
 require_relative './repo-audit/repository_helper'
 require_relative './repo-audit/repository_content'
 require_relative './repo-audit/report'
+require_relative './repo-audit/version_matcher'
 
 require_relative './repo-audit/checks/base_check'
 
