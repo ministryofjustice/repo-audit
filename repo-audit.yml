@@ -2,7 +2,6 @@ checks:
   - type: :file_content
     metadata:
       description: 'LICENSE file has the expected content'
-      style_guide_url: 'http://example.com/#file-license-content'
     arguments:
       filename: LICENSE
       content_matchers:
@@ -12,7 +11,6 @@ checks:
   - type: :file_content
     metadata:
       description: 'Dangerfile file has the expected content'
-      style_guide_url: 'http://example.com/#file-dangerfile-content'
     arguments:
       filename: Dangerfile
       content_matchers:
@@ -25,6 +23,24 @@ checks:
       filenames:
         - .travis.yml
         - circle.yml
+
+  - type: :version
+    metadata:
+      description: 'If a ruby repository, version must be ~> 2.2'
+    arguments:
+      version: '~> 2.2'
+      file_matchers:
+        - Gemfile: ^ruby '(?<version>\S+)'$
+        - .ruby-version: ^(?<version>\S+)$
+        - .travis.yml: '^rvm: (?<version>\S+)$'
+
+  - type: :version
+    metadata:
+      description: 'If a rails repository, Rails version must be >= 4.2'
+    arguments:
+      version: '>= 4.2'
+      file_matchers:
+        - Gemfile.lock: ^\s+rails \((?<version>\S+)\)$
 
   - type: :last_commit
     metadata:
