@@ -117,7 +117,7 @@ GEM
     pry-byebug (3.4.2)
       byebug (~> 9.0)
       pry (~> 0.10)
-    rack (2.0.3)
+    rack (2.0.8)
     regexp_parser (0.4.4)
     rspec (3.6.0)
       rspec-core (~> 3.6.0)
